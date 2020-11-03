@@ -7,12 +7,11 @@ public class ExceptionTest2 {
 		String data2 = "a100";
 		
 		int value1 = Integer.parseInt(data1);
-		int value2 = Integer.parseInt(data2);//¹®ÀÚÇüÀ» Á¤¼öÇüÅÂ·Î º¯°æ
+		int value2 = Integer.parseInt(data2);//ë¬¸ìí˜•ì„ ì •ìˆ˜í˜•íƒœë¡œ ë³€ê²½
 		
 		System.out.println(value1+value2);
-		
-		//½ÇÇàÇØ¾ß ÇÒ¼öÀÖ´Â ·±Å¸ÀÓ¿¡·¯
-		
+		//ì‹¤í–‰í•´ì•¼ í• ìˆ˜ìˆëŠ” ëŸ°íƒ€ì„ì—ëŸ¬
+		System.out.println(value1);
 	}
 
 }

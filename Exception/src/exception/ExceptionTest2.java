@@ -12,6 +12,7 @@ public class ExceptionTest2 {
 		System.out.println(value1+value2);
 		//실행해야 할수있는 런타임에러
 		System.out.println(value1);
+		System.out.println(value2);
 	}
 
 }

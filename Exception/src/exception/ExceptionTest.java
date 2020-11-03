@@ -16,7 +16,7 @@ public class ExceptionTest {
 			// TODO Auto-generated catch block
 			//e.printStackTrace(); 
 			//e.printStackTrace();오류가어디서부터 시작되었는지 알려줌
-			Systme.out.println("입력값을 확인해 주세요");
+			System.out.println("입력값을 확인해 주세요");
 		}
 
 	}

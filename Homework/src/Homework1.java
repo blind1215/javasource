@@ -8,6 +8,7 @@ public class Homework1 {
 		int first='a';
 		System.out.println(first);
 		int second ='A';
+		
 		System.out.println(second);
 		
 		System.out.println(first-second);
@@ -20,11 +21,14 @@ public class Homework1 {
 		System.out.print("알파벳을 입력하세요 :  ");
 		ch1 = (char)System.in.read(); //ch입력받은 문자를 읽어오겠다 예외처리로 던진다 io오류
 		
-		a = ch1-32;
+		a = ch1-(first-second);
 		
 		ch2 = (char)a;
 		
 		System.out.print(ch2);
+		
+		
+		
 	}
 
 }

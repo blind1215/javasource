@@ -7,8 +7,8 @@ public class DBInsert {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Connection con = null;
-		PreparedStatement pstmt =null;
+		Connection con = null; //연결
+		PreparedStatement pstmt =null; //전송
 		
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -29,14 +29,16 @@ public class DBInsert {
 					System.out.println("입력 성공");
 				}else {
 					System.out.println("입력 실패");
+					
+				
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				pstmt.close();
-				con.close();
+				pstmt.close();//전송끝냄
+				con.close(); //연결끝냄
 			} catch(Exception e2) {
 				e2.printStackTrace();  //오토커밋상태이다
 			}

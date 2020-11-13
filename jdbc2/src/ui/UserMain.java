@@ -3,67 +3,67 @@ package ui;
 import java.util.List;
 import java.util.Scanner;
 
+import action.Action;
+import action.UserAddAction;
+import action.UserListAction;
+import action.UserRemoveAction;
+import action.UserRowAction;
+import action.UserUpdateAction;
+import controller.UserController;
+
 public class UserMain {
 
-	public static void main(String[] args) {
-		System.out.println("===== UserTbl=====");
-		System.out.println("1.조회");
-		System.out.println("2.삽입");
-		System.out.println("3.삭제");
-		System.out.println("4.수정");
-		System.out.println("==================");
-		
-		System.out.println("번호 입력: ");
+	public static void main(String[] args) { 
+		boolean isStop = false;
 		Scanner sc = new Scanner(System.in);
-		int menu = sc.nextInt();
+		UserController userController = new UserController();
 		
-//		UserDAO dao=new UserDAO();
-//		
-//		switch(menu) {
-//		case 1:
-//			System.out.println("userTBL 전체 출력");
-//			List<UserVO> list = dao.getList();
-//			for(UserVO vo:list) {
-//				System.out.println(vo);
-//			}
-//			break;
-//			
-//		case 2:
-//			UserVO vo = new UserVO();
-//			System.out.println("추가할 회원번호를 입력 ");
-//			System.out.print("이름: ");
-//			vo.setUserName(sc.next());
-//			System.out.print("태어난 년도: ");
-//			vo.setBirthYear(sc.nextInt());
-//			System.out.print("주소: ");
-//			vo.setAddr(sc.next());
-//			System.out.print("핸드폰 : ");
-//			vo.setMobile(sc.next());
-//			
-//			System.out.println(dao.inserUser(vo)?"삽입성공":"삽입실패");
-//			
-//			
-//			break;
-//			
-//		case 3:
-//			System.out.println("삭제할 회원번호 입력: ");
-//			int no = sc.nextInt(); //3			
-//			boolean flag=dao.deleteuser(no);
-//			System.out.println(flag?"삭제성공":"삭제실패");
-//			break;
-//			
-//		case 4:
-//			System.out.println("수정할 회원 정보 입력");
-//			System.out.print("수정할 회원번호 입력:");
-//			no = sc.nextInt();
-//			System.out.println("수정할 주소 입력: ");
-//			String addr = sc.next();
-//			flag = dao.updateUser(addr, no);
-//			System.out.println(flag? "수정성공":"수정실패");
-//			break;
-//				
-//		}
-
+		do {
+			System.out.println("=====사용자 메뉴=====");
+			System.out.println("1.전체 조회");
+			System.out.println("2.삽입");
+			System.out.println("3.삭제");
+			System.out.println("4.수정");
+			System.out.println("5.개별 조회");
+			System.out.println("6.프로그램 종료");
+			System.out.println("==================");
+			
+			System.out.print("번호입력 : ");
+			int menu = sc.nextInt();
+			
+			Action action =null;
+			
+			switch(menu) { 
+			case 1:
+				action = new UserListAction();//1번을 담당하는 아이니까 listAction에 넘긴거임
+				break;
+			case 2:
+				action = new UserAddAction(); //2번을 담당하는 거
+				break;
+			case 3:
+				action = new UserRemoveAction();
+				break;
+			case 4:
+				action = new UserUpdateAction();
+				break;
+			case 5:
+				action = new UserRowAction();
+				break;
+			case 6:
+				System.out.println("프로그램 종료");
+				isStop = true;//반복문 종료 isStop이 true일때 반복종료이니까
+				break;
+			default:
+				break;
+			
+			
+			}
+			if (action != null) {
+				userController.processRequest(action, sc); // 액션인스턴스를 한번에 가져오는 작업을 한거임
+			}
+		}while(!isStop);
 	}
-
 }
+
+
+

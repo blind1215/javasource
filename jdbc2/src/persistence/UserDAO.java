@@ -22,7 +22,32 @@ import static persistence.JDBCUtil.*; //모든메소드가 스태틱으로 구�
 		super();
 		this.con = con;
 	}
-
+	 //개별 조회 메소드
+	 public UserVO getRow(int no) {
+		 
+		 PreparedStatement pstmt=null;
+		 ResultSet rs =null;
+		 UserVO vo = null;
+		 try {
+			 String sql = "select * from userTBL where no =?";
+			 pstmt = con.prepareStatement(sql);
+			 pstmt.setInt(1, no);
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 vo = new UserVO();
+				 vo.setNo(rs.getInt("no"));
+				 vo.setUserName(rs.getString("userName"));
+				 vo.setBirthYear(rs.getInt("birthYear"));
+				 vo.setAddr(rs.getString("addr"));
+				 vo.setMobile(rs.getString("mobile"));
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 return vo;
+		
+	 }
+	 //전체 조회 메소드
 	public List<UserVO> getList() {
 
 			
@@ -54,7 +79,7 @@ import static persistence.JDBCUtil.*; //모든메소드가 스태틱으로 구�
 			} finally {
 				close(rs);
 				close(pstmt);
-				close(con);
+				
 			}
 			return list;
 
@@ -82,7 +107,7 @@ import static persistence.JDBCUtil.*; //모든메소드가 스태틱으로 구�
 
 		} finally {
 			close(pstmt);
-			close(con);
+			
 		}
 		return flag;
 	}
@@ -110,7 +135,7 @@ import static persistence.JDBCUtil.*; //모든메소드가 스태틱으로 구�
 
 		} finally {
 			close(pstmt);
-			close(con);
+			
 		}
 		return flag;
 	}
@@ -137,7 +162,7 @@ import static persistence.JDBCUtil.*; //모든메소드가 스태틱으로 구�
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
-			close(con);
+			
 		}
 		return flag;
 			

@@ -9,7 +9,6 @@ public class UserController {
 		try {
 			action.execute(sc);
 		} catch (Exception e) {
-		
 			e.printStackTrace();
 		}
 	}

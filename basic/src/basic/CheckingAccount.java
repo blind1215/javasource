@@ -1,0 +1,31 @@
+package basic;
+
+public class CheckingAccount extends Account {//추가하는부분만 만들기위해 
+	//CheckingAccount
+	//속성 : 계좌번호, 예금주, 잔액, 직불카드 번호
+	protected String cardNo; //protected 확인하기
+	//기능 : 예금,출금, 직불카드 사용액 지불
+	
+	
+		
+	public CheckingAccount(String accountNo, String owner, int balance, String cardNo) {
+	super(accountNo, owner, balance);
+	this.cardNo = cardNo;
+	}
+
+	
+	
+	int pay(String cardNo, int amount) throws Exception {
+		//카드번호와 잔액을 확인한 후 사용액을 지불
+		if(!this.cardNo.equals(cardNo)||getBalance()<amount) {
+			throw new Exception("카드번호 또는 잔액을 확인해 주세요");
+		}
+		//잔액 -사용액 = 잔액리턴
+		return withdraw(amount);
+		
+		
+		
+		
+	
+	}
+}

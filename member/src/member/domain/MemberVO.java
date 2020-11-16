@@ -28,7 +28,7 @@ public class MemberVO {
 
 
 	
-	public MemberVO(int number, String name, String addr, String nation, String email, int age) {
+	public MemberVO(int id, String name, String addr, String nation, String email, int age) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,10 +50,6 @@ public class MemberVO {
 		this.id = id;
 	}
 
-
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
 
 
 	public String getName() {
@@ -80,6 +76,9 @@ public class MemberVO {
 		return nation;
 	}
 
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
 
 
 	public String getEmail() {

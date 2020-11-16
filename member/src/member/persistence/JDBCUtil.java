@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JDBCUtil {
+public class JDBCUtil { //출력하는것 담당
 
 	static {
 		try {

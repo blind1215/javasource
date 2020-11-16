@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import member.action.Action;
 import member.action.MemberAddAcion;
+import member.action.MemberListAction;
+import member.action.MemberRemoveAction;
+import member.action.MemberUpdateAction;
 import member.controller.MemberController;
 
 public class MemberUI {
@@ -13,7 +16,7 @@ public class MemberUI {
 		Scanner sc = new Scanner(System.in);
 		MemberController controller = new MemberController();
 		
-		do {
+		do { //하라고시킴
 			System.out.println("****** 회원 관리 프로그램 ******");
 			System.out.println("1. 회원등록");
 			System.out.println("2. 회원목록 보기");
@@ -31,12 +34,17 @@ public class MemberUI {
 					action = new MemberAddAcion();
 					break;
 				case 2:
+					action = new MemberListAction();
 					break;
 				case 3:
+					action = new MemberUpdateAction();
 					break;
 				case 4:
+					action = new MemberRemoveAction();
 					break;
 				case 5:
+					System.out.println("프로그램을 종료합니다. 수고링~");
+					isStop = true;
 					break;
 			
 				default:
@@ -45,7 +53,7 @@ public class MemberUI {
 			if(action!=null) {
 				controller.processRequest(action, sc);
 			}
-		} while (isStop);
+		} while (!isStop); //트루가 아닐때까지
 	}
 }
 
